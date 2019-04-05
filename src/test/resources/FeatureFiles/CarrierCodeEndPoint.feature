@@ -40,3 +40,14 @@ Scenario: this is a is for ACRO
     	| data.carrierCode[0].partyAceId              | 0000057450		                    |
     	| data.carrierCode[0].pprlsParticipantInd     | false		                          |
     
+    Scenario: this is a negative scenario for ACoRO
+  			Given a carrier code exists with an carrier code of "ACRoO"
+        When a user retrieves the carrier code by carrier code
+        Then the status code is <200>
+        And response includes the following this
+    	| data.carrierCode             | 		                        													  |
+    	| errors[0].message            | Exception while fetching data (/carrierCode) : 404 null|
+    	| errors[0].path[0]   				 | 		   carrierCode                         						  |
+    	
+
+    
